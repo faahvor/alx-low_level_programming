@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdio.h>
 
-/*
+/**
  * print_array - printing arrays
  * @a: parameter to be passed
  * @n: number of time the array prints
