@@ -1,19 +1,35 @@
-#include <stdio.h>
 #include "lists.h"
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 /**
- * list_len - length of the node list
- * @h: pointer to head
- * Return: the length of node
+ * add_node - adding a node to the beginning of a node
+ * @head: double pointer to the head
+ * @str: str name
+ * Return: new address
  */
-size_t list_len(const list_t *h)
-{
-	size_t sum = 0;
 
-	while (h != NULL)
+list_t *add_node(list_t **head, const char *str)
+{
+	list_t *temp;
+
+	temp = malloc(sizeof(struct list_s));
+	if (temp == NULL)
+		return (NULL);
+
+	temp->str = strdup(str);
+
+	if (temp->str == NULL)
 	{
-		sum++;
-		h = h->next;
+		free(temp);
+		return (NULL);
 	}
-	return (sum);
+	temp->len = strlen(str);
+	temp->next = NULL;
+
+	temp->next = *head;
+
+	*head = temp;
+
+	return (*head);
 }
